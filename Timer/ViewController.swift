@@ -40,11 +40,9 @@ class ViewController: UIViewController {
     ix += 5
     cardioView.setNeedsDisplay()
     if ix > 300 {
-      cardioView.transform = CGAffineTransform(scaleX: 0.5, y: 1.0)
+//      cardioView.transform = CGAffineTransform(scaleX: 0.5, y: 1.0)
       tm.invalidate()
     } else { print("ix =", ix) }
     
   }
-
-
 }
