@@ -5,13 +5,14 @@ import UIKit
 
 class CardioView: UIView {
   let line = UIBezierPath()
+  var ar: [Int] = []
   var cnt: Int = 0
   let string = "Heart Beat Transition"
 
   override func draw(_ rect: CGRect) {
     line.stroke()
-    cnt += 1
-    print("cnt =", cnt)
+//    cnt += 1
+//    print("cnt =", cnt)
     
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
@@ -20,7 +21,9 @@ class CardioView: UIView {
     let fmt: DateFormatter = DateFormatter()
     fmt.dateFormat = "yyyy年MM月dd日 \nHH時mm分ss秒"
     let t = fmt.string(from: Date())
-    (string + "\n" + t).draw(with: CGRect(x: 12, y: 12, width: 400, height: 200),
-                             options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
+    (string + "\n" + t)
+      .draw(with: CGRect(x: 12, y: 12, width: 400, height: 200),
+                             options: .usesLineFragmentOrigin,
+                             attributes: attrs, context: nil)
   }
 }

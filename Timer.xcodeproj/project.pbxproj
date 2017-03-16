@@ -58,11 +58,11 @@
 			children = (
 				60A864211E78D61600BC7574 /* AppDelegate.swift */,
 				60A864231E78D61600BC7574 /* ViewController.swift */,
+				60A864331E78DD0400BC7574 /* CardioView.swift */,
 				60A864251E78D61600BC7574 /* Main.storyboard */,
 				60A864281E78D61600BC7574 /* Assets.xcassets */,
 				60A8642A1E78D61600BC7574 /* LaunchScreen.storyboard */,
 				60A8642D1E78D61600BC7574 /* Info.plist */,
-				60A864331E78DD0400BC7574 /* CardioView.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -304,6 +304,7 @@
 				60A864321E78D61600BC7574 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
