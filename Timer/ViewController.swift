@@ -41,10 +41,20 @@ class ViewController: UIViewController {
     // Do any additional setup after loading the view, typically from a nib.
     cardioView.line.move(to: CGPoint(x: 0, y: 165))
     cardioView.line.lineWidth = step[0].ix
+    cardioView.line.lineCapStyle = .round
+    cardioView.line.lineJoinStyle = .round
   }
   override func viewDidLayoutSubviews() {
+    
+    //  ツールバーの配置。
+//    var height = self.topLayoutGuide.length //  ステータスバーの高さを考慮する。
+//    var frame = self.view.bounds
+//    frame.origin.y += height
+//    frame.size.height = 44
+//    self.toolBar.frame = frame
+//    height += frame.size.height
     _ = Timer.scheduledTimer(timeInterval: 0.2, target: self,
-                          selector: #selector(ViewController.update), userInfo: nil, repeats: true)
+                         selector: #selector(ViewController.update(tm:)), userInfo: nil, repeats: true)
     print("viewDidLayoutSubviews")
   }
 
@@ -75,7 +85,7 @@ class ViewController: UIViewController {
     ix += step[idx_s].ix
     cnt += 1
     cardioView.setNeedsDisplay()
-    if ix > 960 {
+    if cnt > 960 {
 //      cardioView.transform = CGAffineTransform(scaleX: 0.5, y: 1.0)
       tm.invalidate()
     } else { print("cnt =", cnt) }
@@ -92,5 +102,11 @@ class ViewController: UIViewController {
     case  480...959 as ClosedRange: return 4
     default: return 4
     }
+  }
+  @IBAction func startHB(_ sender: Any) {
+    print("OK")
+  }
+  @IBAction func stopHB(_ sender: Any) {
+    print("NG")
   }
 }
