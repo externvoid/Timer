@@ -34,6 +34,7 @@ class ViewController: UIViewController {
   var cnt: Int = 0
   var idx_s: Int = 0 //step index
   let step = [Step.step0, Step.step1, Step.step2, Step.step3, Step.step4]
+  var tm: Timer?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -44,17 +45,10 @@ class ViewController: UIViewController {
     cardioView.line.lineCapStyle = .round
     cardioView.line.lineJoinStyle = .round
   }
+  
   override func viewDidLayoutSubviews() {
-    
-    //  ツールバーの配置。
-//    var height = self.topLayoutGuide.length //  ステータスバーの高さを考慮する。
-//    var frame = self.view.bounds
-//    frame.origin.y += height
-//    frame.size.height = 44
-//    self.toolBar.frame = frame
-//    height += frame.size.height
-    _ = Timer.scheduledTimer(timeInterval: 0.2, target: self,
-                         selector: #selector(ViewController.update(tm:)), userInfo: nil, repeats: true)
+//    Timer.scheduledTimer(timeInterval: 0.2, target: self,
+//                         selector: #selector(ViewController.update(tm:)), userInfo: nil, repeats: true)
     print("viewDidLayoutSubviews")
   }
 
@@ -63,7 +57,8 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
-//  func update() {
+// MARK:- 描画
+  // 擬似HBでグラフを描画
   func update(tm: Timer) {
     idx_s = cnt2step(cnt)
     let iy: Int = Int(arc4random_uniform(30)) + 150
@@ -105,8 +100,12 @@ class ViewController: UIViewController {
   }
   @IBAction func startHB(_ sender: Any) {
     print("OK")
+    tm = Timer(timeInterval: 0.2, target: self,
+                         selector: #selector(ViewController.update(tm:)), userInfo: nil, repeats: true)
+    RunLoop.current.add(tm!, forMode: .defaultRunLoopMode)
   }
   @IBAction func stopHB(_ sender: Any) {
     print("NG")
+    tm?.invalidate()
   }
 }

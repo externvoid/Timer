@@ -15,9 +15,13 @@ class CardioView: UIView {
     self.clipsToBounds = (cornerRadius > 0)
     print("UIView#draw")
     line.stroke()
+    makeCaption()
 //    cnt += 1
 //    print("cnt =", cnt)
     
+  }
+  
+  func makeCaption() {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
     let attrs = [NSFontAttributeName: UIFont(name: "Hiragino Sans", size: 24)!,
@@ -30,5 +34,6 @@ class CardioView: UIView {
       .draw(with: CGRect(x: 12, y: 12, width: 400, height: 200),
                              options: .usesLineFragmentOrigin,
                              attributes: attrs, context: nil)
+    
   }
 }
